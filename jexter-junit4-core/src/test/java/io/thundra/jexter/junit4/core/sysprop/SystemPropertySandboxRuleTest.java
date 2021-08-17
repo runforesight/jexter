@@ -18,7 +18,7 @@ public class SystemPropertySandboxRuleTest extends BaseTest {
     @Test
     public void setSysPropShouldBeClearedAfterTestMethod_whenTestMethodAnnotated() {
         Assert.assertNull(System.getProperty(TEST_SYS_PROP_NAME));
-        runTestMethod(EnvironmentVariableSandboxExtensionTestInternal1.class, "setSysProp");
+        runTestMethod(EnvironmentVariableSandboxRuleTestInternal1.class, "setSysProp");
         Assert.assertNull(System.getProperty(TEST_SYS_PROP_NAME));
     }
 
@@ -27,7 +27,7 @@ public class SystemPropertySandboxRuleTest extends BaseTest {
         System.setProperty(TEST_SYS_PROP_NAME, TEST_SYS_PROP_VALUE);
         try {
             Assert.assertEquals(TEST_SYS_PROP_VALUE, System.getProperty(TEST_SYS_PROP_NAME));
-            runTestMethod(EnvironmentVariableSandboxExtensionTestInternal1.class, "updateSysProp");
+            runTestMethod(EnvironmentVariableSandboxRuleTestInternal1.class, "updateSysProp");
             Assert.assertEquals(TEST_SYS_PROP_VALUE, System.getProperty(TEST_SYS_PROP_NAME));
         } finally {
             System.clearProperty(TEST_SYS_PROP_NAME);
@@ -39,7 +39,7 @@ public class SystemPropertySandboxRuleTest extends BaseTest {
         System.setProperty(TEST_SYS_PROP_NAME, TEST_SYS_PROP_VALUE);
         try {
             Assert.assertEquals(TEST_SYS_PROP_VALUE, System.getProperty(TEST_SYS_PROP_NAME));
-            runTestMethod(EnvironmentVariableSandboxExtensionTestInternal1.class, "clearSysProp");
+            runTestMethod(EnvironmentVariableSandboxRuleTestInternal1.class, "clearSysProp");
             Assert.assertEquals(TEST_SYS_PROP_VALUE, System.getProperty(TEST_SYS_PROP_NAME));
         } finally {
             System.clearProperty(TEST_SYS_PROP_NAME);
@@ -49,7 +49,7 @@ public class SystemPropertySandboxRuleTest extends BaseTest {
     @Test
     public void setSysPropShouldBeClearedAfterTestMethod_whenTestClassAnnotated() {
         Assert.assertNull(System.getProperty(TEST_SYS_PROP_NAME));
-        runTestMethod(EnvironmentVariableSandboxExtensionTestInternal2.class, "setSysProp");
+        runTestMethod(EnvironmentVariableSandboxRuleTestInternal2.class, "setSysProp");
         Assert.assertNull(System.getProperty(TEST_SYS_PROP_NAME));
     }
 
@@ -58,7 +58,7 @@ public class SystemPropertySandboxRuleTest extends BaseTest {
         System.setProperty(TEST_SYS_PROP_NAME, TEST_SYS_PROP_VALUE);
         try {
             Assert.assertEquals(TEST_SYS_PROP_VALUE, System.getProperty(TEST_SYS_PROP_NAME));
-            runTestMethod(EnvironmentVariableSandboxExtensionTestInternal2.class, "updateSysProp");
+            runTestMethod(EnvironmentVariableSandboxRuleTestInternal2.class, "updateSysProp");
             Assert.assertEquals(TEST_SYS_PROP_VALUE, System.getProperty(TEST_SYS_PROP_NAME));
         } finally {
             System.clearProperty(TEST_SYS_PROP_NAME);
@@ -70,14 +70,14 @@ public class SystemPropertySandboxRuleTest extends BaseTest {
         System.setProperty(TEST_SYS_PROP_NAME, TEST_SYS_PROP_VALUE);
         try {
             Assert.assertEquals(TEST_SYS_PROP_VALUE, System.getProperty(TEST_SYS_PROP_NAME));
-            runTestMethod(EnvironmentVariableSandboxExtensionTestInternal2.class, "clearSysProp");
+            runTestMethod(EnvironmentVariableSandboxRuleTestInternal2.class, "clearSysProp");
             Assert.assertEquals(TEST_SYS_PROP_VALUE, System.getProperty(TEST_SYS_PROP_NAME));
         } finally {
             System.clearProperty(TEST_SYS_PROP_NAME);
         }
     }
 
-    public static class EnvironmentVariableSandboxExtensionTestInternal1 {
+    public static class EnvironmentVariableSandboxRuleTestInternal1 {
 
         @Rule
         public SystemPropertySandboxRule rule = new SystemPropertySandboxRule();
@@ -102,7 +102,7 @@ public class SystemPropertySandboxRuleTest extends BaseTest {
 
     }
 
-    public static class EnvironmentVariableSandboxExtensionTestInternal2 {
+    public static class EnvironmentVariableSandboxRuleTestInternal2 {
 
         @ClassRule
         public static SystemPropertySandboxRule rule = new SystemPropertySandboxRule();

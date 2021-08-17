@@ -16,31 +16,31 @@ public abstract class JexterBaseRule<C> implements TestRule {
         return new Statement() {
             @Override
             public void evaluate() throws Throwable {
-                C context = onBeforeEvaluate();
+                C context = onBeforeEvaluate(description);
                 try {
                     base.evaluate();
-                    onEvaluateSuccess(context);
+                    onEvaluateSuccess(description, context);
                 } catch (Throwable error) {
-                    onEvaluateError(context, error);
+                    onEvaluateError(description, context, error);
                     throw error;
                 } finally {
-                    onAfterEvaluate(context);
+                    onAfterEvaluate(description, context);
                 }
             }
         };
     }
 
-    protected C onBeforeEvaluate() {
+    protected C onBeforeEvaluate(Description description) {
         return null;
     }
 
-    protected void onEvaluateSuccess(C context) {
+    protected void onEvaluateSuccess(Description description, C context) {
     }
 
-    protected void onEvaluateError(C context, Throwable error) {
+    protected void onEvaluateError(Description description, C context, Throwable error) {
     }
 
-    protected void onAfterEvaluate(C context) {
+    protected void onAfterEvaluate(Description description, C context) {
     }
 
 }
