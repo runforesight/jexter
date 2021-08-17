@@ -97,10 +97,10 @@ EnvironmentVariableHelper.remove("env-var-name");
 
 #### **`EnvironmentVariableSandboxRule`**
 
-Stores environment variables before the test and restores them back to original value after the test
+Stores environment variables before the test and restores them back to original value after the test.
  
 - Add `jexter-junit4-core` dependency
-- Define EnvironmentVariableSandboxRule` as test or class level rule 
+- Define `EnvironmentVariableSandboxRule` as test or class level rule 
 **Method level:**
 ```java
 import io.thundra.jexter.junit4.core.envvar.EnvironmentVariableSandboxRule;
@@ -136,9 +136,52 @@ public class TheTest {
 }
 ```
 
+#### **`SystemPropertySandboxRule`**
+
+Stores system properties before the test and restores them back to original value after the test.
+ 
+- Add `jexter-junit4-core` dependency
+- Define `SystemPropertySandboxRule` as test or class level rule 
+**Method level:**
+```java
+import io.thundra.jexter.junit4.core.sysprop.SystemPropertySandboxRule;
+
+...
+
+public class TheTest {
+
+    ...
+
+    @Rule
+    public SystemPropertySandboxRule rule = new SystemPropertySandboxRule();
+
+    ...
+
+}
+```
+**Class level:**
+```java
+import io.thundra.jexter.junit4.core.sysprop.SystemPropertySandboxRule;
+
+...
+
+public class TheTest {
+
+    ...
+
+    @ClassRule
+    public static SystemPropertySandboxRule rule = new SystemPropertySandboxRule();
+
+    ...
+
+}
+```
+
 ### JUnit 5 Extension
 
 #### **`EnvironmentVariableSandboxExtension`**
+
+Stores environment variables before the test and restores them back to original value after the test.
 
 - Add `jexter-junit5-core` dependency
 - Annotate test method or class by `@EnvironmentVariableSandbox` annotation
@@ -170,6 +213,54 @@ import io.thundra.jexter.junit5.core.envvar.EnvironmentVariableSandbox;
 ...
 
 @EnvironmentVariableSandbox
+public class TheTest {
+
+    ...
+
+    @Test
+    public void test() {
+        ...
+    }
+
+    ...
+
+}
+```
+
+#### **`SystemPropertySandboxExtension`**
+
+Stores system properties before the test and restores them back to original value after the test.
+
+- Add `jexter-junit5-core` dependency
+- Annotate test method or class by `@SystemPropertySandbox` annotation
+
+**Method level:**
+```java
+import io.thundra.jexter.junit5.core.sysprop.SystemPropertySandbox;
+
+...
+
+public class TheTest {
+
+    ...
+
+    @SystemPropertySandbox
+    @Test
+    public void test() {
+        ...
+    }
+
+    ...
+
+}
+```
+**Class level:**
+```java
+import io.thundra.jexter.junit5.core.sysprop.SystemPropertySandbox;
+
+...
+
+@SystemPropertySandbox
 public class TheTest {
 
     ...
