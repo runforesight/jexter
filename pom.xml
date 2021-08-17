@@ -4,7 +4,7 @@
 
     <groupId>io.thundra</groupId>
     <artifactId>jexter</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Jexter</name>
@@ -32,7 +32,7 @@
         <url>https://github.com/thundra-io/jexter.git</url>
         <connection>scm:git:https://${GITHUB_TOKEN}@github.com/thundra-io/jexter.git</connection>
         <developerConnection>scm:git:https://${GITHUB_TOKEN}@github.com/thundra-io/jexter.git</developerConnection>
-        <tag>v1.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
