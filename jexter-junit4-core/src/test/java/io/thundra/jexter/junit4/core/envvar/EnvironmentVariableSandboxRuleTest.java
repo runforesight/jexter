@@ -19,7 +19,7 @@ public class EnvironmentVariableSandboxRuleTest extends BaseTest {
     @Test
     public void setEnvVarShouldBeClearedAfterTestMethod_whenTestMethodAnnotated() {
         Assert.assertNull(EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
-        runTestMethod(EnvironmentVariableSandboxExtensionTestInternal1.class, "setEnvVar");
+        runTestMethod(EnvironmentVariableSandboxRuleTestInternal1.class, "setEnvVar");
         Assert.assertNull(EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
     }
 
@@ -28,7 +28,7 @@ public class EnvironmentVariableSandboxRuleTest extends BaseTest {
         EnvironmentVariableHelper.set(TEST_ENV_VAR_NAME, TEST_ENV_VAR_VALUE);
         try {
             Assert.assertEquals(TEST_ENV_VAR_VALUE, EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
-            runTestMethod(EnvironmentVariableSandboxExtensionTestInternal1.class, "updateEnvVar");
+            runTestMethod(EnvironmentVariableSandboxRuleTestInternal1.class, "updateEnvVar");
             Assert.assertEquals(TEST_ENV_VAR_VALUE, EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
         } finally {
             EnvironmentVariableHelper.remove(TEST_ENV_VAR_NAME);
@@ -40,7 +40,7 @@ public class EnvironmentVariableSandboxRuleTest extends BaseTest {
         EnvironmentVariableHelper.set(TEST_ENV_VAR_NAME, TEST_ENV_VAR_VALUE);
         try {
             Assert.assertEquals(TEST_ENV_VAR_VALUE, EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
-            runTestMethod(EnvironmentVariableSandboxExtensionTestInternal1.class, "clearEnvVar");
+            runTestMethod(EnvironmentVariableSandboxRuleTestInternal1.class, "clearEnvVar");
             Assert.assertEquals(TEST_ENV_VAR_VALUE, EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
         } finally {
             EnvironmentVariableHelper.remove(TEST_ENV_VAR_NAME);
@@ -50,7 +50,7 @@ public class EnvironmentVariableSandboxRuleTest extends BaseTest {
     @Test
     public void setEnvVarShouldBeClearedAfterTestMethod_whenTestClassAnnotated() {
         Assert.assertNull(EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
-        runTestMethod(EnvironmentVariableSandboxExtensionTestInternal2.class, "setEnvVar");
+        runTestMethod(EnvironmentVariableSandboxRuleTestInternal2.class, "setEnvVar");
         Assert.assertNull(EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
     }
 
@@ -59,7 +59,7 @@ public class EnvironmentVariableSandboxRuleTest extends BaseTest {
         EnvironmentVariableHelper.set(TEST_ENV_VAR_NAME, TEST_ENV_VAR_VALUE);
         try {
             Assert.assertEquals(TEST_ENV_VAR_VALUE, EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
-            runTestMethod(EnvironmentVariableSandboxExtensionTestInternal2.class, "updateEnvVar");
+            runTestMethod(EnvironmentVariableSandboxRuleTestInternal2.class, "updateEnvVar");
             Assert.assertEquals(TEST_ENV_VAR_VALUE, EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
         } finally {
             EnvironmentVariableHelper.remove(TEST_ENV_VAR_NAME);
@@ -71,14 +71,14 @@ public class EnvironmentVariableSandboxRuleTest extends BaseTest {
         EnvironmentVariableHelper.set(TEST_ENV_VAR_NAME, TEST_ENV_VAR_VALUE);
         try {
             Assert.assertEquals(TEST_ENV_VAR_VALUE, EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
-            runTestMethod(EnvironmentVariableSandboxExtensionTestInternal2.class, "clearEnvVar");
+            runTestMethod(EnvironmentVariableSandboxRuleTestInternal2.class, "clearEnvVar");
             Assert.assertEquals(TEST_ENV_VAR_VALUE, EnvironmentVariableHelper.get(TEST_ENV_VAR_NAME));
         } finally {
             EnvironmentVariableHelper.remove(TEST_ENV_VAR_NAME);
         }
     }
 
-    public static class EnvironmentVariableSandboxExtensionTestInternal1 {
+    public static class EnvironmentVariableSandboxRuleTestInternal1 {
 
         @Rule
         public EnvironmentVariableSandboxRule rule = new EnvironmentVariableSandboxRule();
@@ -103,7 +103,7 @@ public class EnvironmentVariableSandboxRuleTest extends BaseTest {
 
     }
 
-    public static class EnvironmentVariableSandboxExtensionTestInternal2 {
+    public static class EnvironmentVariableSandboxRuleTestInternal2 {
 
         @ClassRule
         public static EnvironmentVariableSandboxRule rule = new EnvironmentVariableSandboxRule();

@@ -177,6 +177,47 @@ public class TheTest {
 }
 ```
 
+#### **`StopwatchRule`**
+
+Measures the elapsed time of a test or test suite (class) execution.
+ 
+- Add `jexter-junit4-core` dependency
+- Define `StopwatchRule` as test or class level rule 
+**Method level:**
+```java
+import io.thundra.jexter.junit4.core.sw.StopwatchRule;
+
+...
+
+public class TheTest {
+
+    ...
+
+    @Rule
+    public StopwatchRule rule = new StopwatchRule();
+
+    ...
+
+}
+```
+**Class level:**
+```java
+import io.thundra.jexter.junit4.core.sw.StopwatchRule;
+
+...
+
+public class TheTest {
+
+    ...
+
+    @ClassRule
+    public static StopwatchRule rule = new StopwatchRule();
+
+    ...
+
+}
+```
+
 ### JUnit 5 Extension
 
 #### **`EnvironmentVariableSandboxExtension`**
@@ -261,6 +302,54 @@ import io.thundra.jexter.junit5.core.sysprop.SystemPropertySandbox;
 ...
 
 @SystemPropertySandbox
+public class TheTest {
+
+    ...
+
+    @Test
+    public void test() {
+        ...
+    }
+
+    ...
+
+}
+```
+
+#### **`StopwatchExtension`**
+
+Measures the elapsed time of a test or test suite (class) execution.
+
+- Add `jexter-junit5-core` dependency
+- Annotate test method or class by `@Stopwatch` annotation
+
+**Method level:**
+```java
+import io.thundra.jexter.junit5.core.sw.Stopwatch;
+
+...
+
+public class TheTest {
+
+    ...
+
+    @Stopwatch
+    @Test
+    public void test() {
+        ...
+    }
+
+    ...
+
+}
+```
+**Class level:**
+```java
+import io.thundra.jexter.junit5.core.sw.Stopwatch;
+
+...
+
+@Stopwatch
 public class TheTest {
 
     ...

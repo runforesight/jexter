@@ -2,6 +2,7 @@ package io.thundra.jexter.junit4.core.sysprop;
 
 import io.thundra.jexter.core.sysprop.ThreadLocalProperties;
 import io.thundra.jexter.junit4.core.JexterBaseRule;
+import org.junit.runner.Description;
 
 import java.util.Properties;
 
@@ -28,14 +29,14 @@ public class SystemPropertySandboxRule
     }
 
     @Override
-    protected SystemPropertiesContext onBeforeEvaluate() {
+    protected SystemPropertiesContext onBeforeEvaluate(Description description) {
         Properties sysProps = System.getProperties();
         System.setProperties(new ThreadLocalProperties(sysProps));
         return new SystemPropertiesContext(sysProps);
     }
 
     @Override
-    protected void onAfterEvaluate(SystemPropertiesContext context) {
+    protected void onAfterEvaluate(Description description, SystemPropertiesContext context) {
         if (context != null) {
             System.setProperties(context.sysProps);
         }

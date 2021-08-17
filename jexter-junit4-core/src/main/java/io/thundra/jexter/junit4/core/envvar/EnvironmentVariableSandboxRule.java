@@ -2,6 +2,7 @@ package io.thundra.jexter.junit4.core.envvar;
 
 import io.thundra.jexter.core.envvar.EnvironmentVariableHelper;
 import io.thundra.jexter.junit4.core.JexterBaseRule;
+import org.junit.runner.Description;
 
 import java.util.Map;
 
@@ -28,12 +29,12 @@ public class EnvironmentVariableSandboxRule
     }
 
     @Override
-    protected EnvironmentVariablesContext onBeforeEvaluate() {
+    protected EnvironmentVariablesContext onBeforeEvaluate(Description description) {
         return new EnvironmentVariablesContext(EnvironmentVariableHelper.getAllCopy());
     }
 
     @Override
-    protected void onAfterEvaluate(EnvironmentVariablesContext context) {
+    protected void onAfterEvaluate(Description description, EnvironmentVariablesContext context) {
         if (context != null) {
             EnvironmentVariableHelper.setAll(context.envVars);
         }

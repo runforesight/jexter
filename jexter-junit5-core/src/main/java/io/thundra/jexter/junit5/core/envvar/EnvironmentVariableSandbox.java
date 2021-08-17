@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
  * <p>So modifications over environment variables during the text execution are rolled-back
  * after the test to prevent effecting subsequent tests.</p>
  *
- * <p>{@code EnvironmentVariableSandboxExtension} can be used on the method and
+ * <p>{@code EnvironmentVariableSandbox} can be used on the method and
  * on the class level. If a class is annotated, environment variables will be
  * sandboxed for all tests inside that class.</p>
  *

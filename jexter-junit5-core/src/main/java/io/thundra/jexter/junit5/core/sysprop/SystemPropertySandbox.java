@@ -15,8 +15,8 @@ import java.lang.annotation.Target;
  * <p>So modifications over system properties during the text execution are rolled-back
  * after the test to prevent effecting subsequent tests.</p>
  *
- * <p>{@code SystemPropertySandboxExtension} can be used on the method and
- * on the class level. If a class is annotated, esystem properties will be
+ * <p>{@code SystemPropertySandbox} can be used on the method and
+ * on the class level. If a class is annotated, system properties will be
  * sandboxed for all tests inside that class.</p>
  *
  * @author serkan
