@@ -100,7 +100,8 @@ EnvironmentVariableHelper.remove("env-var-name");
 Stores environment variables before the test and restores them back to original value after the test.
  
 - Add `jexter-junit4-core` dependency
-- Define `EnvironmentVariableSandboxRule` as test or class level rule 
+- Define `EnvironmentVariableSandboxRule` as test or class level rule
+ 
 **Method level:**
 ```java
 import io.thundra.jexter.junit4.core.envvar.EnvironmentVariableSandboxRule;
@@ -142,6 +143,7 @@ Stores system properties before the test and restores them back to original valu
  
 - Add `jexter-junit4-core` dependency
 - Define `SystemPropertySandboxRule` as test or class level rule 
+
 **Method level:**
 ```java
 import io.thundra.jexter.junit4.core.sysprop.SystemPropertySandboxRule;
@@ -183,6 +185,7 @@ Measures the elapsed time of a test or test suite (class) execution.
  
 - Add `jexter-junit4-core` dependency
 - Define `StopwatchRule` as test or class level rule 
+
 **Method level:**
 ```java
 import io.thundra.jexter.junit4.core.sw.StopwatchRule;
